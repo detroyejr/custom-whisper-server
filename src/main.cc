@@ -121,8 +121,8 @@ int main(const int argc, const char *argv[]) {
     }
   }
 
-  if (args["models"] == "") {
-    std::cout << "Error: model not found." << std::endl;
+  if (args["model"] == "") {
+    std::cout << "Error: model " << args["model"] << " not found." << std::endl;
     exit(1);
   }
 
