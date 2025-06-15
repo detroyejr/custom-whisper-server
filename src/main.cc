@@ -82,7 +82,7 @@ void transcribe(httplib::Request req, whisper_context_params cparams,
 
     if (std::filesystem::exists(fname + ".txt")) {
       std::filesystem::copy_file(fname + ".txt",
-                                 args["out-directory"] + "/" + fname + ".md");
+                                 args["output-dir"] + "/" + fname + ".md");
       std::filesystem::remove(fname + ".txt");
     }
 
@@ -96,7 +96,7 @@ int main(const int argc, const char *argv[]) {
 
   // Defaults
   args["model"] = "";
-  args["out-directory"] = "";
+  args["output-dir"] = "";
   args["paths"] = ".";
   args["port"] = "8080";
   args["threads"] = "4";
