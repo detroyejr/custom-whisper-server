@@ -81,6 +81,11 @@ void transcribe(httplib::Request req, whisper_context_params cparams,
     }
 
     if (std::filesystem::exists(fname + ".txt")) {
+      auto slash = args["output-dir"].find_last_of("/");
+      if (slash == args["output-dir"].back()) {
+        args["output-dir"].erase(slash);
+      }
+
       std::filesystem::copy_file(fname + ".txt",
                                  args["output-dir"] + "/" + fname + ".md");
       std::filesystem::remove(fname + ".txt");
